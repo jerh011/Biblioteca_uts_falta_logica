@@ -1,0 +1,55 @@
+﻿@model List<CMT_PrestamoModels>;
+
+@{
+    ViewData["Title"] = "Listar";
+
+}
+<div class="card col-8">
+    <div class="card-header">
+        Lista de Prestamos
+    </div>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-asp-controller="Prestamos" class="btn btn-primary btn-sm">Crear nuevo</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nombres</th>
+                    <th>Apellido Paterno</th>
+                    <th>Fecha Prestamo</th>
+                    <th>Fecha Devolucion</th>
+                    <th>Titulo del Libro</th>
+                    <th>Clasificacion</th>
+                    <th>IBSN</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Us_Identificador</td>
+                        <td>@item.Us_Nombres</td>
+                        <td>@item.Us_ApePa</td>
+                        <td>@item.Pre_Fecha_prestamo</td>
+                        <td>@item.Pre_Fecha_devolucion</td>
+                        <td>@item.Lib_Titulo</td>
+                        <td>@item.Lib_Clasificacion</td>
+                        <td>@item.Lib_IBSN</td>
+                     
+                        <td>
+                            <!--
+                            
+      
+                           
+
+                            -->
+                            <a asp-action="Editar" asp-asp-controller="Prestamos" asp-route-IdPrestamo="@item.Pre_Id_Prestamo" class="btn btn-primary btn-sm">Editar</a>
+                            <a asp-action="Eliminar" asp-asp-controller="Prestamos" asp-route-IdPrestamo="@item.Pre_Id_Prestamo" class="btn btn-primary btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
